@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOMALIG | Unspoiled Golden Paradise of Quezon</title>
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts: Poppins & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. SLIDING LEFT OFF-CANVAS MENU & CLEAN NAVBAR -->
+    <nav class="navbar navbar-expand fixed-top custom-navbar">
+        <div class="container-xl d-flex align-items-center justify-content-between">
+            
+            <!-- Left: Toggle Sidebar Button & Brand -->
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn sidebar-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#leftSidebarMenu" aria-controls="leftSidebarMenu" aria-label="Toggle navigation menu">
+                    <i class="bi bi-list fs-3"></i>
+                </button>
+                <a class="navbar-brand font-playfair fw-bold d-flex align-items-center gap-2 m-0" href="#hero">
+                    <i class="bi bi-geo-alt-fill text-accent"></i>
+                    <span class="d-none d-sm-inline">JOMALIG<span class="text-accent">.</span>PH</span>
+                </a>
+            </div>
+
+            <!-- Center/Right: Core Navigation Items -->
+            <div class="d-flex align-items-center gap-3">
+                <ul class="navbar-nav flex-row align-items-center gap-3 d-none d-md-flex m-0">
+                    <li class="nav-item"><a class="nav-link px-0" href="#hero">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-0" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link px-0" href="#destinations">Destinations</a></li>
+                    <li class="nav-item"><a class="nav-link px-0" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link px-0" href="#travel-guide">Travel Guide</a></li>
+                </ul>
+
+                <button class="btn btn-accent px-3 py-2 rounded-pill fw-semibold text-nowrap" data-bs-toggle="modal" data-bs-target="#planVisitModal" style="font-size: 0.9rem;">
+                    Book a Trip
+                </button>
+
+                <!-- Theme Toggle Button -->
+                <button class="btn theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle Theme">
+                    <i class="bi bi-sun-fill" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HIDE/UNHIDE LEFT OFF-CANVAS NAVIGATION DRAWER -->
+    <div class="offcanvas offcanvas-start custom-offcanvas" tabindex="-1" id="leftSidebarMenu" aria-labelledby="leftSidebarMenuLabel">
+        <div class="offcanvas-header border-bottom border-secondary-subtle px-4 py-4">
+            <h5 class="offcanvas-title font-playfair fw-bold d-flex align-items-center gap-2" id="leftSidebarMenuLabel">
+                <span class="brand-badge" style="width: 32px; height: 32px; font-size: 0.8rem;">JS</span>
+                <span>JOMALIG<span class="text-accent">.</span>PH</span>
+            </h5>
+            <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body px-4 py-4 d-flex flex-column justify-content-between">
+            <ul class="navbar-nav gap-2 fs-6">
+                <li class="nav-item"><a class="nav-link side-nav-link" href="#hero"><i class="bi bi-house-door text-accent me-3 fs-5"></i>Home</a></li>
+                <li class="nav-item"><a class="nav-link side-nav-link" href="#about"><i class="bi bi-info-circle text-accent me-3 fs-5"></i>About</a></li>
+                <li class="nav-item"><a class="nav-link side-nav-link" href="#destinations"><i class="bi bi-geo-alt text-accent me-3 fs-5"></i>Destinations</a></li>
+                <li class="nav-item"><a class="nav-link side-nav-link" href="#experiences"><i class="bi bi-compass text-accent me-3 fs-5"></i>Experiences</a></li>
+                <li class="nav-item"><a class="nav-link side-nav-link" href="#gallery"><i class="bi bi-images text-accent me-3 fs-5"></i>Gallery</a></li>
+                <li class="nav-item"><a class="nav-link side-nav-link" href="#travel-guide"><i class="bi bi-journal-text text-accent me-3 fs-5"></i>Travel Guide</a></li>
+                <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="openModalFromSidebar('#planVisitModal')"><i class="bi bi-calendar-check text-accent me-3 fs-5"></i>Book Your Trip</a></li>
+                <li class="nav-item"><a class="nav-link side-nav-link" href="#testimonials"><i class="bi bi-chat-quote text-accent me-3 fs-5"></i>Traveler Experiences</a></li>
+                <li class="nav-item"><a class="nav-link side-nav-link" href="#faq"><i class="bi bi-question-circle text-accent me-3 fs-5"></i>FAQ</a></li>
+            </ul>
+            <div class="sidebar-footer pt-4 border-top border-secondary-subtle">
+                <p class="small text-muted-custom m-0">Jomalig Island Portal &copy; 2026</p>
+                <p class="small text-muted-custom">CCS114 Web Technologies</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. HERO SECTION -->
+    <section class="hero-section position-relative d-flex align-items-center justify-content-center" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="container text-center position-relative z-2">
+            <span class="badge-tag mb-3 animate-fade-down">QUEZON'S GOLDEN FRONTIER</span>
+            <h1 class="display-3 fw-bold font-playfair text-white mb-4 animate-fade-up">
+                Discover the Untouched <span class="text-accent italic">Awe</span> of Jomalig
+            </h1>
+            <p class="lead text-light mx-auto mb-5 hero-desc animate-fade-up">
+                Escape to a remote golden-sand paradise where turquoise waters meet pristine coastlines, untouched by commercial tourism.
+            </p>
+            <div class="d-flex flex-wrap justify-content-center gap-3 animate-fade-up">
+                <a href="#destinations" class="btn btn-accent btn-lg px-4 py-3 rounded-pill fw-semibold">
+                    Explore Destinations <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+                <a href="#travel-guide" class="btn btn-outline-light btn-lg px-4 py-3 rounded-pill fw-semibold">
+                    View Travel Guide
+                </a>
+            </div>
+        </div>
+        <div class="hero-indicator">
+            <span class="font-monospace">01 / JOMALIG ISLAND</span>
+        </div>
+    </section>
+
+    <!-- 3. ISLAND / ABOUT SECTION -->
+    <section class="py-5 section-padding overflow-hidden" id="about">
+        <div class="container-xl">
+            <div class="about-grid-container">
+                <!-- Left Column: Media Card with Glowing Orange Border -->
+                <div class="about-media-card">
+                    <!-- Top Main Image Box -->
+                    <div class="media-top-box">
+                        <img src="images/pic_8.jpg" alt="History & Unique Characteristics of Jomalig Island">
+                    </div>
+                    <!-- Bottom Grid Row: Sub Image + Metric Stat Box -->
+                    <div class="media-bottom-row">
+                        <div class="media-sub-box">
+                            <img src="images/pic_2.jpg" alt="Jomalig Shoreline Preview">
+                        </div>
+                        <div class="metric-stat-box">
+                            <span class="stat-number">5+ hrs</span>
+                            <span class="stat-label">Boat Journey from Port</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Text Content & Feature Card Slots -->
+                <div class="about-text-content">
+                    <div>
+                        <span class="badge-tag mb-3">DESTINATION REVIEW</span>
+                        <h2 class="font-playfair fw-bold display-6 mb-3">
+                            History & Unique Characteristics of <span class="text-accent">Jomalig Island</span>
+                        </h2>
+                        <p class="text-muted-custom lh-lg mb-3">
+                            Jomalig is an isolated island municipality situated in the outermost part of Quezon province. Often referred to as the ultimate remote frontier, it rewards intrepid travelers with complete peace and unspoiled natural beauty.
+                        </p>
+                        <p class="text-muted-custom lh-lg mb-4">
+                            The island's standout feature is its distinctive golden-amber sand, formed over centuries by mineral weathering. Combined with expansive agoho forests and pristine waters, it offers a unique ecosystem unlike any other beach destination in the country.
+                        </p>
+                    </div>
+
+                    <!-- Bottom 2 Mini Feature Slots -->
+                    <div class="about-feature-cards">
+                        <div class="feature-mini-card">
+                            <h6 class="font-playfair fw-bold text-accent mb-2">Golden Sand & Coast</h6>
+                            <p class="small text-muted-custom m-0">Vast golden-yellow sandbars stretching across undisturbed Pacific waters.</p>
+                        </div>
+                        <div class="feature-mini-card">
+                            <h6 class="font-playfair fw-bold text-accent mb-2">Agoho Pine Forests</h6>
+                            <p class="small text-muted-custom m-0">Tranquil pine tree fringes lining the coasts for a cooler beachfront shelter.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. DESTINATIONS SECTION -->
+    <section class="py-5 section-padding bg-alt" id="destinations">
+        <div class="container-xl">
+            <div class="text-center max-w-700 mx-auto mb-5">
+                <span class="section-subtitle">MUST-VISIT LOCATIONS</span>
+                <h2 class="font-playfair fw-bold display-6 mb-3">Iconic <span class="text-accent">Destinations</span></h2>
+                <p class="text-muted-custom">Discover the breathtaking landmarks and coastal wonders scattered across Jomalig Island.</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Destination 1 -->
+                <div class="col-md-4">
+                    <div class="card destination-card border-0 rounded-4 overflow-hidden shadow-sm h-100"
+                         data-title="Kanaway Beach & Rock Formations"
+                         data-category="Destination / Golden Coast"
+                         data-desc="Kanaway Beach is located on the eastern coast of Jomalig Island. It features jaw-dropping rock formations carved by relentless Pacific waves, wide golden sand expanses, and a rugged landscape that photographers and nature lovers adore."
+                         data-tags="Rock Formations, Golden Sand, Tide Pools, Sunrise Point"
+                         data-img="images/rock-formation.jpg">
+                        <div class="position-relative overflow-hidden card-img-box dynamic-image-zoom">
+                            <img src="images/rock-formation.jpg" class="card-img-top" alt="Kanaway Beach">
+                            <span class="badge bg-dark text-accent position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill">Golden Coast</span>
+                        </div>
+                        <div class="card-body p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <h4 class="font-playfair fw-bold mb-2">Kanaway Beach & Rock Formations</h4>
+                                <p class="text-muted-custom small mb-4">Famous for its dramatic rock formations, vast golden sandbars, and majestic Pacific wave views.</p>
+                            </div>
+                            <button class="btn btn-outline-accent rounded-pill w-100 fw-semibold open-split-modal">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destination 2 -->
+                <div class="col-md-4">
+                    <div class="card destination-card border-0 rounded-4 overflow-hidden shadow-sm h-100"
+                         data-title="Salibungot Beach"
+                         data-category="Destination / Pine Trees"
+                         data-desc="Salibungot Beach serves as the primary gateway where boats dock. Its amber-golden sand is lined with dense Agoho pine trees resembling a mini-Baguio by the sea. It is the premier spot for sunrise viewing and beach camping."
+                         data-tags="Agoho Trees, Pinkish-Golden Sand, Camping Site, Gateway Port"
+                         data-img="images/pic_2.jpg">
+                        <div class="position-relative overflow-hidden card-img-box dynamic-image-zoom">
+                            <img src="images/pic_2.jpg" class="card-img-top" alt="Salibungot Beach">
+                            <span class="badge bg-dark text-accent position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill">Pine Trees</span>
+                        </div>
+                        <div class="card-body p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <h4 class="font-playfair fw-bold mb-2">Salibungot Beach</h4>
+                                <p class="text-muted-custom small mb-4">The main drop-off point adorned with golden sand, whispering Agoho pine trees, and stunning sunrise vistas.</p>
+                            </div>
+                            <button class="btn btn-outline-accent rounded-pill w-100 fw-semibold open-split-modal">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destination 3 -->
+                <div class="col-md-4">
+                    <div class="card destination-card border-0 rounded-4 overflow-hidden shadow-sm h-100"
+                         data-title="Little Boracay"
+                         data-category="Destination / Sandbar"
+                         data-desc="Little Boracay features powdery, fine sand bars and shallow turquoise waters that stretch out during low tide. It provides a safe, pristine swimming zone for visitors looking to unwind in crystal-clear calm water."
+                         data-tags="Turquoise Water, Powdery Fine Sand, Swimming Lagoon, Shallow Tide"
+                         data-img="images/pic_5.jpg">
+                        <div class="position-relative overflow-hidden card-img-box dynamic-image-zoom">
+                            <img src="images/pic_5.jpg" class="card-img-top" alt="Little Boracay">
+                            <span class="badge bg-dark text-accent position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill">Sandbar</span>
+                        </div>
+                        <div class="card-body p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <h4 class="font-playfair fw-bold mb-2">Little Boracay</h4>
+                                <p class="text-muted-custom small mb-4">Boasting exceptionally fine sand and shallow crystal-clear waters perfect for relaxing afternoon swims.</p>
+                            </div>
+                            <button class="btn btn-outline-accent rounded-pill w-100 fw-semibold open-split-modal">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ISLAND EXPERIENCES SECTION -->
+    <section class="py-5 section-padding" id="experiences">
+        <div class="container-xl">
+            <div class="text-center max-w-700 mx-auto mb-5">
+                <span class="section-subtitle">CURATED ADVENTURES</span>
+                <h2 class="font-playfair fw-bold display-6 mb-3">Raw & Unfiltered <span class="text-accent italic">Experiences</span></h2>
+                <p class="text-muted-custom">Immerse yourself deeply in Jomalig’s untamed rhythms with side-by-side frameless visuals and descriptive narratives.</p>
+            </div>
+
+            <!-- Alternating Row 1: Image Left, Caption Right -->
+            <div class="row align-items-center g-5 mb-5 pb-lg-4">
+                <div class="col-lg-7">
+                    <div class="position-relative overflow-hidden dynamic-frameless-wrapper shadow-lg">
+                        <img src="images/pic_3.jpg" alt="Island Bike Tour" class="img-fluid w-100 object-fit-cover">
+                    </div>
+                </div>
+                <div class="col-lg-5 ps-lg-4 text-center text-lg-start">
+                    <span class="text-accent font-monospace small fw-bold d-block mb-2">01 / LAND & VILLAGE</span>
+                    <h3 class="font-playfair fw-bold fs-2 mb-3">Coastal Dirt Trails & Bike Explorations</h3>
+                    <p class="text-muted-custom lh-lg mb-0">Rent a rugged bicycle or hop on a local habal-habal to navigate red-dirt paths, secluded fishing hamlets, and endless rows of whispering pines without traditional boundaries.</p>
+                </div>
+            </div>
+
+            <!-- Alternating Row 2: Caption Left, Image Right -->
+            <div class="row align-items-center g-5 mb-5 pb-lg-4 flex-lg-row-reverse">
+                <div class="col-lg-7">
+                    <div class="position-relative overflow-hidden dynamic-frameless-wrapper shadow-lg">
+                        <img src="images/sunrise.jpg" alt="Sunrise Chasing" class="img-fluid w-100 object-fit-cover">
+                    </div>
+                </div>
+                <div class="col-lg-5 pe-lg-4 text-center text-lg-start">
+                    <span class="text-accent font-monospace small fw-bold d-block mb-2">02 / DAWN</span>
+                    <h3 class="font-playfair fw-bold fs-2 mb-3">Salibungot Sunrise Chasing</h3>
+                    <p class="text-muted-custom lh-lg mb-0">Wake up before dawn to watch the Pacific sky ignite in brilliant shades of amber and gold right over the untouched coastline.</p>
+                </div>
+            </div>
+
+            <!-- Alternating Row 3: Image Left, Caption Right -->
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7">
+                    <div class="position-relative overflow-hidden dynamic-frameless-wrapper shadow-lg">
+                        <img src="images/stargazing-camp.jpg" alt="Stargazing Camps" class="img-fluid w-100 object-fit-cover">
+                    </div>
+                </div>
+                <div class="col-lg-5 ps-lg-4 text-center text-lg-start">
+                    <span class="text-accent font-monospace small fw-bold d-block mb-2">03 / NIGHT</span>
+                    <h3 class="font-playfair fw-bold fs-2 mb-3">Zero-Light Stargazing Camps</h3>
+                    <p class="text-muted-custom lh-lg mb-0">Far away from urban light pollution, pitch a tent under crystal-clear skies and witness breathtaking panoramas of the Milky Way.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. RESPONSIVE GALLERY GRID SECTION -->
+    <section class="py-5 section-padding bg-alt" id="gallery">
+        <div class="container-xl">
+            <div class="text-center max-w-700 mx-auto mb-5">
+                <span class="section-subtitle">VISUAL ARCHIVE</span>
+                <h2 class="font-playfair fw-bold display-6 mb-3">Jomalig Through <span class="text-accent">The Lens</span></h2>
+                <p class="text-muted-custom">A curated glimpse into the golden sands, vibrant sunsets, and rustic charm of Jomalig Island.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4 col-sm-6">
+                    <div class="gallery-item rounded-4 overflow-hidden position-relative shadow-sm dynamic-gallery-card" data-bs-toggle="modal" data-bs-target="#galleryModal1">
+                        <img src="images/pic_2.jpg" alt="Gallery 1" class="w-100 object-fit-cover">
+                        <div class="gallery-overlay d-flex flex-column justify-content-end p-4">
+                            <span class="text-accent small font-monospace">01 / COASTLINE</span>
+                            <h5 class="text-white font-playfair m-0">Golden Shoreline</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="gallery-item rounded-4 overflow-hidden position-relative shadow-sm dynamic-gallery-card" data-bs-toggle="modal" data-bs-target="#galleryModal2">
+                        <img src="images/horizon.jpg" alt="Gallery 2" class="w-100 object-fit-cover">
+                        <div class="gallery-overlay d-flex flex-column justify-content-end p-4">
+                            <span class="text-accent small font-monospace">02 / WATERS</span>
+                            <h5 class="text-white font-playfair m-0">Turquoise Horizons</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="gallery-item rounded-4 overflow-hidden position-relative shadow-sm dynamic-gallery-card" data-bs-toggle="modal" data-bs-target="#galleryModal3">
+                        <img src="images/trees.avif" alt="Gallery 3" class="w-100 object-fit-cover">
+                        <div class="gallery-overlay d-flex flex-column justify-content-end p-4">
+                            <span class="text-accent small font-monospace">03 / NATURE</span>
+                            <h5 class="text-white font-playfair m-0">Pine Tree Borders</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="gallery-item rounded-4 overflow-hidden position-relative shadow-sm dynamic-gallery-card" data-bs-toggle="modal" data-bs-target="#galleryModal4">
+                        <img src="images/sunset.jpg" alt="Gallery 4" class="w-100 object-fit-cover">
+                        <div class="gallery-overlay d-flex flex-column justify-content-end p-4">
+                            <span class="text-accent small font-monospace">04 / SUNSET</span>
+                            <h5 class="text-white font-playfair m-0">Golden Hour Glow</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="gallery-item rounded-4 overflow-hidden position-relative shadow-sm dynamic-gallery-card" data-bs-toggle="modal" data-bs-target="#galleryModal5">
+                        <img src="images/pic_3.jpg" alt="Gallery 5" class="w-100 object-fit-cover">
+                        <div class="gallery-overlay d-flex flex-column justify-content-end p-4">
+                            <span class="text-accent small font-monospace">05 / ADVENTURE</span>
+                            <h5 class="text-white font-playfair m-0">Coastal Trails</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="gallery-item rounded-4 overflow-hidden position-relative shadow-sm dynamic-gallery-card" data-bs-toggle="modal" data-bs-target="#galleryModal6">
+                        <img src="images/sand.jpg" alt="Gallery 6" class="w-100 object-fit-cover">
+                        <div class="gallery-overlay d-flex flex-column justify-content-end p-4">
+                            <span class="text-accent small font-monospace">06 / PARADISE</span>
+                            <h5 class="text-white font-playfair m-0">Untouched Sands</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. TRAVEL GUIDE SECTION -->
+    <section class="py-5 section-padding" id="travel-guide">
+        <div class="container-xl">
+            <div class="text-center max-w-700 mx-auto mb-5">
+                <span class="section-subtitle">PLANNER ESSENTIALS</span>
+                <h2 class="font-playfair fw-bold display-6 mb-3">Comprehensive <span class="text-accent">Travel Guide</span></h2>
+                <p class="text-muted-custom">Everything you need to know about routes, estimated expenses, and packing checklists before embarking on your Jomalig journey.</p>
+            </div>
+
+            <!-- Guide Tabs Navigation -->
+            <ul class="nav nav-pills justify-content-center mb-4 gap-2" id="guideTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active px-4 py-2 rounded-pill fw-semibold" id="routes-tab" data-bs-toggle="pill" data-bs-target="#routes-content" type="button" role="tab">Routes & Travel</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link px-4 py-2 rounded-pill fw-semibold" id="expenses-tab" data-bs-toggle="pill" data-bs-target="#expenses-content" type="button" role="tab">Estimated Expenses</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link px-4 py-2 rounded-pill fw-semibold" id="packing-tab" data-bs-toggle="pill" data-bs-target="#packing-content" type="button" role="tab">Packing Checklist</button>
+                </li>
+            </ul>
+
+            <!-- Guide Tabs Content -->
+            <div class="tab-content p-4 p-md-5 rounded-4 border border-secondary-subtle bg-alt shadow-sm" id="guideTabsContent">
+                
+                <!-- Tab 1: Routes & Travel (Accordion) -->
+                <div class="tab-pane fade show active" id="routes-content" role="tabpanel" aria-labelledby="routes-tab">
+                    <h3 class="font-playfair fw-bold mb-4">How to Get to Jomalig Island</h3>
+                    <div class="accordion custom-accordion" id="routesAccordion">
+                        <div class="accordion-item bg-transparent border-secondary-subtle mb-3 rounded-3 overflow-hidden">
+                            <h2 class="accordion-header" id="routeOne">
+                                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRouteOne">
+                                    Step 1: Manila to Real, Quezon (Infanta)
+                                </button>
+                            </h2>
+                            <div id="collapseRouteOne" class="accordion-collapse collapse" data-bs-parent="#routesAccordion">
+                                <div class="accordion-body text-muted-custom">
+                                    Take a van or bus from Legarda (Manila) or Cubao bound for Infanta or Real, Quezon (approx. 3 to 4 hours travel time). Disembark at the Real Port (Ungos Port).
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-transparent border-secondary-subtle mb-3 rounded-3 overflow-hidden">
+                            <h2 class="accordion-header" id="routeTwo">
+                                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRouteTwo">
+                                    Step 2: Real Port to Jomalig Port
+                                </button>
+                            </h2>
+                            <div id="collapseRouteTwo" class="accordion-collapse collapse show" data-bs-parent="#routesAccordion">
+                                <div class="accordion-body text-muted-custom">
+                                    Ride a passenger outrigger boat (locally known as "lantsa") from Ungos Port to Jomalig Island. The boat ride takes approximately 5 to 7 hours depending on sea and weather conditions.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-transparent border-secondary-subtle mb-3 rounded-3 overflow-hidden">
+                            <h2 class="accordion-header" id="routeThree">
+                                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRouteThree">
+                                    Step 3: Jomalig Port to Resort / Homestay
+                                </button>
+                            </h2>
+                            <div id="collapseRouteThree" class="accordion-collapse collapse" data-bs-parent="#routesAccordion">
+                                <div class="accordion-body text-muted-custom">
+                                    Upon arrival at Jomalig Port, register at the Tourism Office to pay the environmental fee. Afterwards, hire a local habal-habal (motorcycle) driver to transport you directly to your chosen resort or homestay.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Estimated Expenses -->
+                <div class="tab-pane fade" id="expenses-content" role="tabpanel" aria-labelledby="expenses-tab">
+                    <h3 class="font-playfair fw-bold mb-4">Estimated Budget Breakdown (Per Person)</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered border-secondary-subtle align-middle">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Expense Item</th>
+                                    <th>Estimated Cost (PHP)</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Bus / Van Fare (Manila to Real Port roundtrip)</td>
+                                    <td>₱800 - ₱1,000</td>
+                                    <td>Standard airconditioned van or bus</td>
+                                </tr>
+                                <tr>
+                                    <td>Boat Fare (Real Port to Jomalig roundtrip)</td>
+                                    <td>₱1,000 - ₱2,000</td>
+                                    <td>Includes passenger fee</td>
+                                </tr>
+                                <tr>
+                                    <td>Environmental & Tourism Fees</td>
+                                    <td>₱350</td>
+                                    <td>Paid at the port upon arrival</td>
+                                </tr>
+                                <tr>
+                                    <td>Homestay / Camping & Food (3 Days / 2 Nights)</td>
+                                    <td>₱2,500 - ₱4,000</td>
+                                    <td>Varies based on accommodation choice</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Packing Checklist -->
+                <div class="tab-pane fade" id="packing-content" role="tabpanel" aria-labelledby="packing-tab">
+                    <h3 class="font-playfair fw-bold mb-4">Essential Packing Checklist</h3>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled d-flex flex-column gap-3">
+                                <li class="d-flex align-items-center gap-2"><i class="bi bi-check-circle-fill text-accent"></i> <span>Cash (No major ATMs available on the island)</span></li>
+                                <li class="d-flex align-items-center gap-2"><i class="bi bi-check-circle-fill text-accent"></i> <span>Dry bags / Waterproof phone cases</span></li>
+                                <li class="d-flex align-items-center gap-2"><i class="bi bi-check-circle-fill text-accent"></i> <span>Power banks & solar chargers (Limited electricity)</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled d-flex flex-column gap-3">
+                                <li class="d-flex align-items-center gap-2"><i class="bi bi-check-circle-fill text-accent"></i> <span>Reef-safe sunscreen & insect repellent</span></li>
+                                <li class="d-flex align-items-center gap-2"><i class="bi bi-check-circle-fill text-accent"></i> <span>Light tropical clothing & swimwear</span></li>
+                                <li class="d-flex align-items-center gap-2"><i class="bi bi-check-circle-fill text-accent"></i> <span>Reusable water bottle & personal first aid kit</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TRAVELER EXPERIENCES SECTION -->
+    <section class="py-5 section-padding bg-alt" id="testimonials">
+        <div class="container-xl">
+            <div class="text-center max-w-700 mx-auto mb-5">
+                <span class="section-subtitle">VISITOR TESTIMONIALS</span>
+                <h2 class="font-playfair fw-bold display-6 mb-3">Traveler Experiences</h2>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="p-4 rounded-4 border border-secondary-subtle h-100 d-flex flex-column justify-content-between testimonial-card">
+                        <div>
+                            <div class="text-accent mb-3">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="text-muted-custom small lh-base mb-4">"The long boat ride is completely worth it. Salibungot's golden sand and pine trees feel like a remote paradise unlike anywhere else."</p>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center text-white fw-bold" style="width: 40px; height: 40px;">M</div>
+                            <div>
+                                <h6 class="fw-bold m-0 small">Abilus R.</h6>
+                                <span class="text-muted-custom small" style="font-size: 0.75rem;">Visited April 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="p-4 rounded-4 border border-secondary-subtle h-100 d-flex flex-column justify-content-between testimonial-card">
+                        <div>
+                            <div class="text-accent mb-3">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="text-muted-custom small lh-base mb-4">"Kanaway Beach rock formations during low tide were incredible. The local motorcycle drivers make touring the whole island so smooth."</p>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center text-white fw-bold" style="width: 40px; height: 40px;">S</div>
+                            <div>
+                                <h6 class="fw-bold m-0 small">Ling-ling A.</h6>
+                                <span class="text-muted-custom small" style="font-size: 0.75rem;">Visited May 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="p-4 rounded-4 border border-secondary-subtle h-100 d-flex flex-column justify-content-between testimonial-card">
+                        <div>
+                            <div class="text-accent mb-3">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="text-muted-custom small lh-base mb-4">"Pure serenity. If you want to disconnect from busy city life and enjoy untouched beaches, Jomalig is the place to be."</p>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center text-white fw-bold" style="width: 40px; height: 40px;">D</div>
+                            <div>
+                                <h6 class="fw-bold m-0 small">Pristine B.</h6>
+                                <span class="text-muted-custom small" style="font-size: 0.75rem;">Visited March 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FREQUENTLY ASKED QUESTIONS SECTION -->
+    <section class="py-5 section-padding" id="faq">
+        <div class="container-xl">
+            <div class="text-center max-w-700 mx-auto mb-5">
+                <span class="section-subtitle">QUESTIONS & ANSWERS</span>
+                <h2 class="font-playfair fw-bold display-6 mb-3">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="max-w-700 mx-auto">
+                <div class="accordion custom-accordion" id="faqAccordion">
+                    <div class="accordion-item bg-transparent border-secondary-subtle mb-3 rounded-3 overflow-hidden">
+                        <h2 class="accordion-header" id="faqHeadOne">
+                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne">
+                                Is there signal or internet connectivity on the island?
+                            </button>
+                        </h2>
+                        <div id="faqCollapseOne" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted-custom">
+                                Cellular signal (Smart/Globe) is available in primary areas, but internet connectivity can be spotty or weak depending on the specific location and weather conditions.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item bg-transparent border-secondary-subtle mb-3 rounded-3 overflow-hidden">
+                        <h2 class="accordion-header" id="faqHeadTwo">
+                            <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseTwo">
+                                What accommodations are available?
+                            </button>
+                        </h2>
+                        <div id="faqCollapseTwo" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted-custom">
+                                Accommodations range from basic beachfront resorts and homestays to designated tent camping grounds along Salibungot and nearby beaches.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item bg-transparent border-secondary-subtle mb-3 rounded-3 overflow-hidden">
+                        <h2 class="accordion-header" id="faqHeadThree">
+                            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseThree">
+                                What is the best month to travel?
+                            </button>
+                        </h2>
+                        <div id="faqCollapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted-custom">
+                                The dry summer months from March to May are ideal for visiting Jomalig to experience calmer seas and optimal sunny beach weather.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. RESTRUCTURED ORGANIZED FOOTER -->
+    <footer class="footer-section py-4 border-top border-secondary-subtle">
+        <div class="container-xl">
+            <div class="row g-4 align-items-start justify-content-between">
+                <!-- Left Side: Brand, Description, Navigation Links, Socials & Copyright -->
+                <div class="col-lg-7 text-center text-lg-start">
+                    <a class="navbar-brand font-playfair fw-bold fs-5 d-flex align-items-center gap-2 mb-2 justify-content-center justify-content-lg-start" href="#hero">
+                        <span class="brand-badge" style="width: 30px; height: 30px; font-size: 0.8rem;">JS</span>
+                        <span>JOMALIG<span class="text-accent">.</span>PH</span>
+                    </a>
+                    <p class="text-muted-custom small mb-3">
+                        A college midterm project website developed for CCS114 Web Technologies. Showcasing the pristine natural beauty of Jomalig Island, Quezon, Philippines.
+                    </p>
+                    <div class="d-flex flex-wrap align-items-center gap-3 mb-3 justify-content-center justify-content-lg-start">
+                        <a href="#hero" class="footer-link small">Home</a>
+                        <a href="#about" class="footer-link small">About</a>
+                        <a href="#destinations" class="footer-link small">Destinations</a>
+                        <a href="#experiences" class="footer-link small">Experiences</a>
+                        <a href="#travel-guide" class="footer-link small">Travel Guide</a>
+                        <div class="d-flex gap-2 ms-md-2">
+                            <a href="#" class="social-icon-sm" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="social-icon-sm" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="social-icon-sm" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-wrap gap-3 small text-muted-custom pt-1 border-top border-secondary-subtle justify-content-center justify-content-lg-start">
+                        <span>&copy; 2026 Jomalig Island Project. CCS114 Web Technologies.</span>
+                        <span>Designed with Bootstrap 5.3 & Custom CSS</span>
+                    </div>
+                </div>
+
+                <!-- Right Side: Project Team & Roles Only -->
+                <div class="col-lg-4 text-center text-lg-start">
+                    <div class="p-3 rounded-3 bg-alt border border-secondary-subtle">
+                        <h6 class="font-playfair fw-bold text-accent mb-2 small text-uppercase">Project Team & Roles</h6>
+                        <ul class="list-unstyled small text-muted-custom m-0 d-flex flex-column gap-1">
+                            <li><strong>Project Lead:</strong> Athena Gwyneth Basco</li>
+                            <li><strong>Content & Documentation:</strong> Cabusas, Buenafe</li>
+                            <li><strong>Component Developer:</strong> Baguio, Brizuela</li>
+                            <li><strong>UI/UX & Layout Designer:</strong> Alejandro, Abila</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 10. FLOATING BACK TO TOP BUTTON -->
+    <button onclick="scrollToTop()" id="backToTopBtn" class="back-to-top-btn" title="Go to top" aria-label="Back to Top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- REDESIGNED SPLIT-SCREEN PREVIEW MODAL -->
+    <div class="modal fade" id="splitPreviewModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog split-modal-dialog modal-dialog-centered">
+            <div class="modal-content split-modal-content">
+                <button type="button" class="btn-close btn-close-floating" data-bs-dismiss="modal" aria-label="Close"></button>
+                
+                <!-- LEFT SIDE: FULL HEIGHT IMAGE -->
+                <div class="split-modal-left">
+                    <img id="split-modal-img" src="" alt="Preview Image" class="split-modal-img">
+                </div>
+
+                <!-- RIGHT SIDE: CONTENT PANEL -->
+                <div class="split-modal-right">
+                    <div>
+                        <span id="split-modal-category" class="badge-pill-accent">Category</span>
+                        <h2 id="split-modal-title" class="font-playfair fw-bold mb-3 fs-2">Title</h2>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-accent font-monospace small fw-bold text-uppercase mb-2">History & Background</h6>
+                            <p id="split-modal-desc" class="text-muted-custom fs-6 lh-base mb-0">Description content goes here.</p>
+                        </div>
+
+                        <div class="modal-highlight-box mb-4">
+                            <h6 class="fw-bold small d-flex align-items-center gap-2 mb-2">
+                                <i class="bi bi-stars text-accent"></i> Key Details / Highlights
+                            </h6>
+                            <div id="split-modal-tags" class="d-flex flex-wrap gap-2">
+                                <!-- Dynamic Tags Injected Here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-close-preview" data-bs-dismiss="modal">Close Preview</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXPANDED NEARLY FULLSCREEN POP-OUT BOOK TRIP MODAL FORM -->
+    <div class="modal fade" id="planVisitModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered full-screen-popout-dialog">
+            <div class="modal-content border-0 rounded-4 overflow-hidden shadow-lg custom-modal-bg">
+                <div class="modal-header border-bottom border-secondary-subtle px-4 py-3 d-flex justify-content-between align-items-center">
+                    <h5 class="modal-title font-playfair fw-bold fs-4 m-0"><i class="bi bi-calendar-check text-accent me-2"></i>Book Your Trip</h5>
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5">
+                    <form id="visitForm" onsubmit="handleVisitSubmit(event)">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label for="visitorName" class="form-label small text-uppercase fw-bold">Full Name</label>
+                                <input type="text" class="form-control custom-input rounded-3 p-3" id="visitorName" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="visitorEmail" class="form-label small text-uppercase fw-bold">Email Address</label>
+                                <input type="email" class="form-control custom-input rounded-3 p-3" id="visitorEmail" placeholder="you@example.com" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="visitDate" class="form-label small text-uppercase fw-bold">Preferred Travel Date</label>
+                                <input type="date" class="form-control custom-input rounded-3 p-3" id="visitDate" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="guestCount" class="form-label small text-uppercase fw-bold">Number of Guests</label>
+                                <select class="form-select custom-input rounded-3 p-3" id="guestCount" required>
+                                    <option value="" selected disabled>Select number of people</option>
+                                    <option value="1">1 Person (Solo)</option>
+                                    <option value="2">2 Guests (Couple/Friends)</option>
+                                    <option value="3-5">3 - 5 Guests (Small Group)</option>
+                                    <option value="6+">6+ Guests (Class/Tour Group)</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="visitMessage" class="form-label small text-uppercase fw-bold">Special Requests & Inquiries</label>
+                                <textarea class="form-control custom-input rounded-3 p-3" id="visitMessage" rows="4" placeholder="Mention homestay preferences, boat inquiries, or island tour requests..."></textarea>
+                            </div>
+                            <div class="col-12 text-center mt-4">
+                                <button type="submit" class="btn btn-accent px-5 py-3 rounded-pill fs-5 fw-semibold">Submit Trip Inquiry</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="formSuccessAlert" class="alert alert-success mt-4 d-none rounded-3 text-center fs-5" role="alert">
+                        Thank you! Your Jomalig travel inquiry has been received.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Modals 1 to 6 -->
+    <div class="modal fade" id="galleryModal1" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content custom-modal-bg border-0 rounded-4 overflow-hidden"><div class="modal-body p-0 modal-img-container"><img src="images/pic_2.jpg" class="img-fluid w-100" alt="Gallery preview 1"></div></div></div></div>
+    <div class="modal fade" id="galleryModal2" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content custom-modal-bg border-0 rounded-4 overflow-hidden"><div class="modal-body p-0 modal-img-container"><img src="images/horizon.jpg" class="img-fluid w-100" alt="Gallery preview 2"></div></div></div></div>
+    <div class="modal fade" id="galleryModal3" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content custom-modal-bg border-0 rounded-4 overflow-hidden"><div class="modal-body p-0 modal-img-container"><img src="images/trees.avif" class="img-fluid w-100" alt="Gallery preview 3"></div></div></div></div>
+    <div class="modal fade" id="galleryModal4" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content custom-modal-bg border-0 rounded-4 overflow-hidden"><div class="modal-body p-0 modal-img-container"><img src="images/sunset.jpg" class="img-fluid w-100" alt="Gallery preview 4"></div></div></div></div>
+    <div class="modal fade" id="galleryModal5" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content custom-modal-bg border-0 rounded-4 overflow-hidden"><div class="modal-body p-0 modal-img-container"><img src="images/pic_3.jpg" class="img-fluid w-100" alt="Gallery preview 5"></div></div></div></div>
+    <div class="modal fade" id="galleryModal6" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content custom-modal-bg border-0 rounded-4 overflow-hidden"><div class="modal-body p-0 modal-img-container"><img src="images/sand.jpg" class="img-fluid w-100" alt="Gallery preview 6"></div></div></div></div>
+
+    <!-- Bootstrap JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Helper function to safely bridge Offcanvas to Modal transitions
+        function openModalFromSidebar(modalId) {
+            const sidebarEl = document.getElementById('leftSidebarMenu');
+            const sidebarInstance = bootstrap.Offcanvas.getInstance(sidebarEl) || new bootstrap.Offcanvas(sidebarEl);
+            
+            sidebarInstance.hide();
+
+            sidebarEl.addEventListener('hidden.bs.offcanvas', function () {
+                const modalEl = document.querySelector(modalId);
+                const modalInstance = bootstrap.Modal.getOrCreateInstance(modalEl);
+                modalInstance.show();
+            }, { once: true });
+        }
+
+        // Offcanvas Navigation Fix: Smooth Scroll & Close Offcanvas Correctly
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebarEl = document.getElementById('leftSidebarMenu');
+            const sideNavLinks = document.querySelectorAll('.side-nav-link');
+
+            sideNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+
+                    const sidebarInstance = bootstrap.Offcanvas.getInstance(sidebarEl) || new bootstrap.Offcanvas(sidebarEl);
+                    sidebarInstance.hide();
+
+                    sidebarEl.addEventListener('hidden.bs.offcanvas', function () {
+                        if (targetSection) {
+                            targetSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }, { once: true });
+                });
+            });
+        });
+
+        // Theme Toggle Functionality
+        function toggleTheme() {
+            const htmlTag = document.documentElement;
+            const currentTheme = htmlTag.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlTag.setAttribute('data-bs-theme', newTheme);
+            
+            // Update Icon
+            const themeIcon = document.getElementById('themeIcon');
+            if (newTheme === 'light') {
+                if(themeIcon) themeIcon.className = 'bi bi-moon-fill';
+            } else {
+                if(themeIcon) themeIcon.className = 'bi bi-sun-fill';
+            }
+        }
+
+        // Back to Top Button Functionality
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.style.display = "flex";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Plan Visit Form Handler
+        function handleVisitSubmit(event) {
+            event.preventDefault();
+            const alertBox = document.getElementById('formSuccessAlert');
+            alertBox.classList.remove('d-none');
+            setTimeout(() => {
+                const modalEl = document.getElementById('planVisitModal');
+                const modal = bootstrap.Modal.getInstance(modalEl);
+                modal.hide();
+                alertBox.classList.add('d-none');
+                document.getElementById('visitForm').reset();
+            }, 2000);
+        }
+
+        // DYNAMIC SPLIT-SCREEN PREVIEW MODAL SCRIPT
+        document.addEventListener('DOMContentLoaded', () => {
+            const splitModalEl = document.getElementById('splitPreviewModal');
+            if (!splitModalEl) return;
+            
+            const splitModal = new bootstrap.Modal(splitModalEl);
+            const modalImg = document.getElementById('split-modal-img');
+            const modalCategory = document.getElementById('split-modal-category');
+            const modalTitle = document.getElementById('split-modal-title');
+            const modalDesc = document.getElementById('split-modal-desc');
+            const modalTags = document.getElementById('split-modal-tags');
+
+            document.querySelectorAll('.destination-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    const title = card.getAttribute('data-title');
+                    const category = card.getAttribute('data-category');
+                    const desc = card.getAttribute('data-desc');
+                    const tagsStr = card.getAttribute('data-tags');
+                    const imgSrc = card.getAttribute('data-img');
+
+                    if (title) modalTitle.textContent = title;
+                    if (category) modalCategory.textContent = category;
+                    if (desc) modalDesc.textContent = desc;
+                    if (imgSrc) modalImg.src = imgSrc;
+
+                    modalTags.innerHTML = '';
+                    if (tagsStr) {
+                        const tagsArr = tagsStr.split(',');
+                        tagsArr.forEach(tag => {
+                            const pill = document.createElement('span');
+                            pill.className = 'detail-tag-pill';
+                            pill.textContent = tag.trim();
+                            modalTags.appendChild(pill);
+                        });
+                    }
+
+                    splitModal.show();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
